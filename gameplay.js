@@ -37,18 +37,18 @@ let questions = [
     },
     {
         question: "Which functional group is least nucleophilic?",
-        choice1: "ketone",
-        choice2: "aldehyde",
-        choice3: "amine",
-        choice4: "amide",
-        answer: 4
+        choice1: "Ketone",
+        choice2: "Aldehyde",
+        choice3: "Amide",
+        choice4: "Amine",
+        answer: 3
     },
     {
-        question: "Which amino acid does not have a cyclic functional group",
-        choice1: "tyrosine",
-        choice2: "phenylalanine",
-        choice3: "histidine",
-        choice4: "arginine",
+        question: "Which amino acid does not have a cyclic functional group?",
+        choice1: "Tyrosine",
+        choice2: "Phenylalanine",
+        choice3: "Histidine",
+        choice4: "Arginine",
         answer: 4
     }
 ];
