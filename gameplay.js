@@ -28,18 +28,34 @@ let questions = [
         answer: 2
     },
     {
-        question: "Inside which HTML element do we put the JavaScript?",
-        choice1: "<script>",
-        choice2: "<javascript>",
-        choice3: "<js>",
-        choice4: "<scripting>",
-        answer: 1
+        question: "Which metal is trivalent?",
+        choice1: "Zinc",
+        choice2: "Aluminum",
+        choice3: "Sodium",
+        choice4: "Magnesium",
+        answer: 2
+    },
+    {
+        question: "Which functional group is least nucleophilic?",
+        choice1: "ketone",
+        choice2: "aldehyde",
+        choice3: "amine",
+        choice4: "amide",
+        answer: 4
+    },
+    {
+        question: "Which amino acid does not have a cyclic functional group",
+        choice1: "tyrosine",
+        choice2: "phenylalanine",
+        choice3: "histidine",
+        choice4: "arginine",
+        answer: 4
     }
 ];
 
 //contants
 const correctBonus = 10;
-const maxQuestions = 3;
+const maxQuestions = 5;
 
 //game start
 startGame = () => {
@@ -47,6 +63,18 @@ startGame = () => {
     score = 0;
     availableQuestions = [...questions];
     getNewQuestion();
+
+    let count = 75;
+    let interval = setInterval(function(){
+    document.getElementById('count').innerHTML=count;
+    count--;
+    if (count === 0){
+        clearInterval(interval);
+        document.getElementById('count').innerHTML='Done';
+        // or...
+        return window.location.assign(href="index.html");
+        }
+    }, 1000);
 };
 
 getNewQuestion = () => {
@@ -56,7 +84,9 @@ getNewQuestion = () => {
         return window.location.assign(href= "end.html");
     }
     questionCounter++;
-    progressText.innerText == `Question: ${questionCounter}/${maxQuestions}`;
+    if (progressText !== null) {
+        progressText.innerText == `Question: ${questionCounter}/${maxQuestions}`;
+    }
 
     //updating the progress bar
     progressBarFull.style.width = `${(questionCounter/maxQuestions)*100}%`;
@@ -107,7 +137,12 @@ choices.forEach(choice => {
 incrementScore = num => {
     score += num;
     scoreText.innerText = score;
+    localStorage.setItem('score', score);
 };
 
 //function to start game 
-startGame();
+//substr() is removing everything prior to the last / in url
+let currentPage = window.location.pathname.substr(window.location.pathname.lastIndexOf('/'),window.location.pathname.length);
+if (currentPage === "/gameplay.html") {
+    startGame();
+};
